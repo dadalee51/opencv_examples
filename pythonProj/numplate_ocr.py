@@ -1,6 +1,7 @@
 import cv2
- 
-#############################################
+import pytesseract
+
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
 frameWidth = 640
 frameHeight = 480
 nPlateCascade = cv2.CascadeClassifier("haar/haarcascade_russian_plate_number.xml")
@@ -13,7 +14,7 @@ cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 cap.set(10,150)
 count = 0
- 
+
 while True:
     success, img = cap.read()
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -25,10 +26,11 @@ while True:
             cv2.putText(img,"Number Plate",(x,y-5),
                         cv2.FONT_HERSHEY_COMPLEX_SMALL,1,color,2)
             imgRoi = img[y:y+h,x:x+w]
+            print("image read:"+pytesseract.image_to_string(imgRoi, lang='eng', config='-c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'))
             cv2.imshow("ROI", imgRoi)
  
     cv2.imshow("Result", img)
- 
+
     if cv2.waitKey(1) and 0xFF == ord('s'):
         cv2.imwrite("NoPlate_"+str(count)+".jpg",imgRoi)
         cv2.rectangle(img,(0,200),(640,300),(0,255,0),cv2.FILLED)
