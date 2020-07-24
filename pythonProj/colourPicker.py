@@ -3,7 +3,7 @@ import numpy as np
  
 frameWidth = 640
 frameHeight = 480
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
  
@@ -42,7 +42,7 @@ while True:
     mask = cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR)
     hStack = np.hstack([img, mask, result])
     cv2.imshow('Horizontal Stacking', hStack)
-    if cv2.waitKey(1) and 0xFF == ord('q'):
+    if cv2.waitKey(1) == 27:
         break
  
 cap.release()
