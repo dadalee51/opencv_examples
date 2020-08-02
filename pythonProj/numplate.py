@@ -8,7 +8,7 @@ minArea = 200
 color = (255,0,255)
 ###############################################
  
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, frameWidth)
 cap.set(4, frameHeight)
 cap.set(10,150)
