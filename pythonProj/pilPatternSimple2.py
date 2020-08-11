@@ -31,9 +31,9 @@ for x in range(img_x-target_x+1):
         for tx in range(target_x):
             for ty in range(target_y):
                 print(x+tx,' ', y+ty)
-                print('target pixel:',target[ty*target_y+tx])
+                print('target pixel:',target[ty*target_x+tx])
                 print('img_pixel:',ar[(y+ty)*img_x+(x+tx)])
-                if target[ty*target_y+tx]==dot(ar[(y+ty)*img_x+(x+tx)]):
+                if target[ty*target_x+tx]==dot(ar[(y+ty)*img_x+(x+tx)]):
                     print('match found:',ar[(y+ty)*img_x+(x+tx)])
                 else:
                     #only switch to false when not found.
