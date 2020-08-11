@@ -29,7 +29,7 @@ while True:
  
     cv2.imshow("Result", img)
  
-    if cv2.waitKey(1) and 0xFF == ord('s'):
+    if cv2.waitKey(1) == ord('s'):
         cv2.imwrite("NoPlate_"+str(count)+".jpg",imgRoi)
         cv2.rectangle(img,(0,200),(640,300),(0,255,0),cv2.FILLED)
         cv2.putText(img,"Scan Saved",(150,265),cv2.FONT_HERSHEY_DUPLEX,
@@ -37,3 +37,9 @@ while True:
         cv2.imshow("Result",img)
         cv2.waitKey(500)
         count +=1
+        
+    if cv2.waitKey(1) == ord('s') or cv2.waitKey(1) == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()

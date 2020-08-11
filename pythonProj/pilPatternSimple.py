@@ -14,7 +14,7 @@ def dot(tup):
 
 for a in ar:
     if dot(a)==target[idx]:
-        print('found a match')
+        print('found a match:',idx)
         cnt+=1
         idx+=1
     else:
