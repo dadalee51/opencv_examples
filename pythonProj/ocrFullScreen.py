@@ -2,9 +2,10 @@
 import cv2
 import pytesseract
 import time
-
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe'
-cap = cv2.VideoCapture(0)
+#tesseact ocr binary installer for w64 can be found at
+#https://digi.bib.uni-mannheim.de/tesseract/tesseract-ocr-w64-setup-v5.0.0-alpha.20200328.exe
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+cap = cv2.VideoCapture(1)
 while True:
     success, img = cap.read()
     cv2.imshow('myimg', img)
